@@ -6,6 +6,8 @@ int secretNumber = random.Next(0, 99);
 bool win = false;
 do
 {
+    int stopGame = 300;
+    int secretrNumber = 10;
     Console.WriteLine("Введите число от 1 до 99");   
     int userNumber = Convert.ToInt32(Console.ReadLine());
     if (userNumber <= 0 && userNumber >= 100)
