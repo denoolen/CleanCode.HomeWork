@@ -6,16 +6,18 @@ int secretNumber = random.Next(0, 99);
 bool win = false;
 do
 {
-    int stopGame = 300;
-    int secretrNumber = 10;
-    Console.WriteLine("Введите число от 1 до 99");   
-    int userNumber = Convert.ToInt32(Console.ReadLine());
-    if (userNumber <= 0 && userNumber >= 100)
-        Console.WriteLine("Введи верное число");
-    else if(userNumber > secretNumber  )
-        Console.WriteLine($"не угадал! {userNumber} больше чем нужно");
-    else if (userNumber < secretNumber)
-        Console.WriteLine($"не угадал! {userNumber} меньше чем нужно");
+
+    Console.WriteLine("Введите число от 1 до 99");
+    try
+    {
+        int userNumber = Convert.ToInt32(Console.ReadLine());
+        if (userNumber <= 0 || userNumber >= 100)
+            Console.WriteLine("Введи верное число");
+        else if (userNumber > secretNumber)
+            Console.WriteLine($"не угадал! {userNumber} больше чем нужно");
+        else if (userNumber < secretNumber)
+            Console.WriteLine($"не угадал! {userNumber} меньше чем нужно");
+
 
 
         if (userNumber == stopGame)
@@ -24,11 +26,18 @@ do
             break;
         }
 
-    if (userNumber == secretNumber)
-    {
-        win = true;
-        Console.WriteLine("Ты выиграл");
+
+        if (userNumber == secretNumber)
+        {
+            win = true;
+            Console.WriteLine("Ты выиграл");
+        }
     }
+    catch
+    {
+        Console.WriteLine("Введи число, епт");
+    }
+   
   
 }
 while (!win);
